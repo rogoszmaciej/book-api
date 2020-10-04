@@ -47,6 +47,7 @@ LOCAL_APPS = [
     "book_api.books.apps.BooksAppConfig",
     "book_api.reviews.apps.ReviewsAppConfig",
     "book_api.users.apps.UsersAppConfig",
+    "book_api.utils.apps.UtilsAppConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

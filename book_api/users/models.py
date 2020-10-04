@@ -1,9 +1,9 @@
-from django.contrib.auth.models import AbstractBaseUser, UserManager
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     """
     Book API User model
 
@@ -11,14 +11,19 @@ class User(AbstractBaseUser):
     """
 
     username = models.CharField(
-        _("Username"),
+        verbose_name=_("Username"),
         max_length=255,
         unique=True,
         help_text=_("User's account username."),
         error_messages={"unique": _("A user with that username already exists.")},
     )
-    email = models.EmailField(_("Email address"), blank=True, unique=True)
-    created_on = models.DateTimeField(_("Date joined"), auto_now_add=True)
+    name = models.CharField(
+        verbose_name=_("Name"),
+        max_length=255,
+        help_text=_("User's name."),
+    )
+    email = models.EmailField(verbose_name=_("Email address"), blank=True, unique=True)
+    created_on = models.DateTimeField(verbose_name=_("Date joined"), auto_now_add=True)
     is_staff = models.BooleanField(
         verbose_name=_("staff status"),
         default=False,
