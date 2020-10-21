@@ -1,4 +1,4 @@
-# mirumee-book-api
+# book-api
 
 ##Installation
 Open console in the project root directory. `Docker` and `docker-compose` must be installed.
